@@ -8,12 +8,14 @@
 #    apt:
 #      update_cache: yes
 
-  - name: install pass package
+  - name: remove pass package
     apt:
       name: pass
       state: absent
+    when: ansible_distribution in ["Ubuntu"]
 
-  - name: add php suppurt for apache
+  - name: remove php support for apache
     apt:
       name: libapache2-mod-php
       state: absent
+    when: ansible_distribution in ["Ubuntu"]
