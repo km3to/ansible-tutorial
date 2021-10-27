@@ -1,22 +1,12 @@
 ---
-
 - hosts: all
   become: true
   tasks:
 
-  - name: update repository index
-    apt:
+  - name: install pass and tmux packages
+    package:
+      name:
+        - "{{ pass_package }}"
+        - "{{ tmux_package }}"
+      state: latest
       update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: install pass package
-    apt:
-      name: pass
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: add php suppurt for apache
-    apt:
-      name: libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Ubuntu"

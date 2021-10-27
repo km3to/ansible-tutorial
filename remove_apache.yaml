@@ -14,8 +14,8 @@
       state: absent
     when: ansible_distribution in ["Ubuntu"]
 
-  - name: remove php support for apache
+  - name: remove tmux package
     apt:
-      name: libapache2-mod-php
+      name: tmux
       state: absent
     when: ansible_distribution in ["Ubuntu"]
